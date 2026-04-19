@@ -1,0 +1,60 @@
+#VRML_SIM R2025a utf8
+PROTO QRBox [
+  field SFVec3f    translation 0 0.1 0
+  field SFRotation rotation    0 0 1 0
+  field SFString   name        "QRBox"
+  field SFVec3f    size        0.05 0.05 0.05
+  field SFColor    color       1 0 0
+  field MFString   qrTexture   "textures/qr2.png"
+  field SFNode     physics     Physics { }
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Shape {
+        appearance PBRAppearance {
+          baseColor IS color
+          roughness 0.8
+          metalness 0
+        }
+        geometry Box {
+          size IS size
+        }
+      }
+      Transform {
+        translation 0.01 0.0251 0.01
+        rotation 1 0 0 -1.57
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColorMap ImageTexture {
+                url IS qrTexture
+              }
+              roughness 0.3
+            }
+            geometry Plane {
+              size 0.03 0.03
+            }
+          }
+        ]
+      }
+
+      # ── ADDED: passive connector on bottom face ──────────
+      Connector {
+        name        "qrbox_connector"
+        type        "passive"
+        translation  0  0  -0.025   # bottom face (size.z / 2 = 0.05/2)
+        rotation     1  0   0  3.14159   # face downward
+      }
+      # ─────────────────────────────────────────────────────
+
+    ]
+    boundingObject Box {
+      size IS size
+    }
+    physics IS physics
+  }
+}

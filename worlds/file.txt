@@ -1,0 +1,55 @@
+E-puck {
+  hidden position_0_0 301.6393065456782
+  hidden position_0_1 -301.6399211391262
+  hidden linearVelocity_0 -0.001955478069289692 -0.01542313099665257 1.404426481513814e-05
+  hidden angularVelocity_0 -0.0003235560721211227 -0.0028022080518645726 -3.9309240828436005
+  hidden rotation_1 0 0.9999999999999999 0 0.04641180105805511
+  hidden linearVelocity_1 0.07820143848002935 -0.08044854069417208 2.095873556338099e-05
+  hidden angularVelocity_1 3.9702798412289013 4.865182619067391 -4.012208023849117
+  hidden rotation_2 0 -1 0 0.04702639450606573
+  hidden linearVelocity_2 -0.08211418869917833 0.049635699757472874 -5.2793085832236725e-05
+  hidden angularVelocity_2 -3.9709292900835367 -4.870786310098046 -4.012151153268671
+  hidden linearVelocity_44 0.021968465723306997 0.013814881727179103 -8.95318634588219e-06
+  hidden angularVelocity_44 -0.0003235331403304844 -0.0028021759374464205 -3.930923947489861
+  translation 0.5022881682187696 -0.0032177429270310014 -0.00013777544342406627
+  rotation 0.0004888353091427751 0.001368278319996364 0.9999989444266826 -0.7221314944056862
+  name "spinning_platform"
+  controller "epuck_spinner"
+  turretSlot [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 7.068551553986118e-08
+        axis 0 1 0
+        anchor 0 0 0.005
+      }
+      device [
+        RotationalMotor {
+          name "plate_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.005
+        rotation 0 0.9999999999999999 0 7.300048299977715e-08
+        children [
+          Shape {
+            appearance OsbWood {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.2
+            }
+          }
+        ]
+        name "spinning_plate"
+        boundingObject Cylinder {
+          height 0.01
+          radius 0.2
+        }
+        physics Physics {
+          density -1
+          mass 0.3
+        }
+      }
+    }
+  ]
+}

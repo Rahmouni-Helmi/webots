@@ -1,0 +1,13 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/robots/universal_robots/protos/UR5e.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/devices/robotiq/protos/Robotiq3fGripper.proto"
+
+PROTO MyUR5e [
+  field MFNode toolSlot [Camera{}, Robotiq3fGripper{}]
+]
+{
+  UR5e {
+    toolSlot IS toolSlot
+  }
+}

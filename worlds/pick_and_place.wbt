@@ -14,11 +14,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/pallet/protos/WoodenPalletStack.proto"
 EXTERNPROTO "../protos/WoodenBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/universal_robots/protos/UR5e.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/robotiq/protos/Robotiq3fGripper.proto"
 EXTERNPROTO "../protos/QRBox.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/conveyors/protos/ConveyorBelt.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/OsbWood.proto"
 EXTERNPROTO "../protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/robotiq/protos/Robotiq2f140Gripper.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BrushedAluminium.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
   title "Pick and Place"
@@ -34,8 +36,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.26844831700815025 0.12952871339584943 -0.9545458676781894 2.278352525563548
-  position 3.4737551335000942 3.023498754034463 2.527627428957776
+  orientation -0.24002513405166828 0.43035867827613955 0.8701605271763899 1.1399909742172931
+  position -3.1303753810599537 -5.482559653487957 4.763373717090216
   exposure 1.5
 }
 TexturedBackground {
@@ -66,20 +68,16 @@ Floor {
     metalness 0
   }
 }
-ConveyorBelt {
-  hidden translation_1 1.0294956553913437e-09 7.275414715124384e-10 0.2247988945562427
-  hidden rotation_1 -0.0016896555140571573 0.9999985723775185 1.75262225457314e-05 2.4328569597109552e-05
-  translation -0.39 0.46 -0.01
-  rotation 0 0 1 1.5708
-  size 1.6 0.3 0.3
-  speed 0
-  acceleration 0
+RectangleArena {
+  translation -0.62 0.93 0.01
+  floorAppearance Parquetry {
+    type "dark strip"
+    colorOverride 0 0 1
+  }
 }
 QRBox {
-  hidden linearVelocity_0 1.3319966034887478e-16 -2.8174286820273584e-17 3.0213803320590186e-17
-  hidden angularVelocity_0 1.5945948950381494e-15 5.130636918127099e-15 8.397461783976024e-17
-  translation 0.9161419629303004 0.4278956419384835 0.024975474999999997
-  rotation 0.24968791005035507 0.9355810468096132 -0.2496879100503549 1.6373346765349472
+  translation 1.05500513768052 0.8706887925447556 0.16997548372423868
+  rotation 8.279548336278075e-05 -8.268754003014315e-05 0.9999999931538394 1.4922028587882872
   name "C"
   color 0.8 0.6 0.4
   qrTexture [
@@ -87,8 +85,8 @@ QRBox {
   ]
 }
 QRBox {
-  translation -0.4380575347841611 0.9718923466002284 0.3147619140152736
-  rotation 0.12258555729436622 -0.9848551570527243 0.12260954599656332 1.5860534419192307
+  translation 1.0486806237088329 0.9218845011813916 0.169975465647825
+  rotation 0.5612904161984894 -0.585170474865821 0.5852594160105722 -2.1187928328306045
   name "B"
   color 0.5 0.6 0.5
   qrTexture [
@@ -162,9 +160,9 @@ DEF PIPES Pose {
   rotation 0 0 1 -1.57
   children [
     LeverValve {
-      hidden position_0_0 -8.032374119359459e-07
-      hidden translation_1 0 1.6064748238717195e-08 -6.432354648922001e-15
-      hidden rotation_1 -1 0 0 8.03005312997554e-07
+      hidden position_0_0 -4.714183576366816e-07
+      hidden translation_1 0 1.894479984262202e-08 -8.965050923848139e-15
+      hidden rotation_1 -0.9999999999999999 0 0 9.471326221269877e-07
       translation 0.50999991 -5.83 1
       rotation 0 0 1 1.5708
       scale 1 1 1
@@ -271,84 +269,71 @@ WoodenBox {
   name "wooden box(3)"
 }
 UR5e {
-  hidden position_0_0 -0.0017524672435726104
-  hidden rotation_1 0 0 -1 0.0017524672436414145
-  hidden position_1_0 -0.07068004842240953
-  hidden rotation_2 0 1 0 1.5001159515775837
-  hidden position_2_0 0.0009189925988305308
-  hidden rotation_3 0 1 0 0.0009189925990507606
-  hidden position_3_0 0.03249429177237282
-  hidden rotation_4 0 1 0 1.6032902917723708
-  hidden position_4_0 -2.5252067515133243e-05
-  hidden rotation_5 0 0 -1 2.5252065425500475e-05
-  hidden position_5_0 -7.137666098776782e-05
-  hidden translation_6 5.47754468207848e-05 -0.008003938601047351 0.14244014388520207
-  hidden rotation_6 -0.3769748451407404 -0.9242805337724621 0.05996216323989032 0.0001236926748599291
-  hidden position_7_0 0.00015753950314300648
-  hidden position_7_1 0.00014094012075383354
-  hidden position_7_2 0.049499904135185235
-  hidden rotation_8 0.7068252234702878 0.7073882244024499 5.867645966126048e-05 3.1417094415668996
-  hidden position_8_0 0.05003085566597937
-  hidden rotation_9 0 0 1 0.0005308556658001542
-  hidden position_9_0 2.0206254903265776e-07
-  hidden rotation_10 0 0 -1 0.5199997979374384
-  hidden position_10_0 -0.05229999999996103
-  hidden rotation_12 0.70682522374116 0.7073882245940771 5.281002736609576e-05 3.141697699361647
-  hidden position_12_0 0.05001317380662208
-  hidden rotation_13 0 0 1 0.0005131738068478478
-  hidden position_13_0 2.3300300284401417e-07
-  hidden rotation_14 0 0 -1 0.5199997669969783
-  hidden position_14_0 -0.052299999999965936
-  hidden rotation_16 0 0 -0.9999999999999999 1.032382731180714e-07
-  hidden position_16_0 -1.1506150234347403e-08
-  hidden rotation_17 0 0 -1 0.5200000115061405
-  hidden position_17_0 -0.05230000000118081
-  translation 0.137839 0.84956 1.4451e-06
-  rotation -3.98815e-07 -1.78798e-06 1 1.57079
+  hidden position_0_0 3.0116770488420808e-05
+  hidden rotation_1 0 0 -0.9999999999999999 0.0019090906918816084
+  hidden position_1_0 9.012878637812145e-05
+  hidden rotation_2 0 1 0 1.5006806623861055
+  hidden position_2_0 2.01941266551388e-05
+  hidden rotation_3 0 1 0 0.0010870655168015455
+  hidden position_3_0 -4.68108498406151e-06
+  hidden rotation_4 0 1 0 1.6032608725774555
+  hidden position_4_0 1.1238102749584186e-06
+  hidden rotation_5 0 0 -1 3.3415314906710115e-05
+  hidden position_5_0 4.72821623216147e-06
+  hidden translation_6 5.4587530859480944e-05 -0.008003938601047322 0.14244014412732015
+  hidden rotation_6 -0.3648699429820865 -0.9292479527282069 0.058035911801961625 0.0001277964033542108
+  hidden position_7_0 0.08782007913745592
+  hidden position_7_1 -0.08799349646139606
+  hidden position_7_2 0.001900187052047759
+  hidden position_7_3 -0.0017667013356125123
+  hidden rotation_8 1 0 0 1.9024440824906528
+  hidden position_9_0 0.09133644327482592
+  hidden rotation_10 -1 0 0 0.6336635567251725
+  hidden rotation_12 1 0 0 1.9024307135618448
+  hidden position_12_0 0.09150986060899055
+  hidden rotation_13 -2.6445569910280324e-08 0.8385492389289207 0.5448258197733724 3.1415929959383857
+  hidden position_14_0 0.0026901810618906643
+  hidden translation_15 0 0.08175505380355634 -0.028219999927629302
+  hidden rotation_15 -1 0 0 0.7223098189381089
+  hidden rotation_17 -2.6406822511883966e-08 -0.838672543240909 -0.5446359933146405 3.141592995950349
+  hidden position_17_0 0.0025566953454575084
+  translation 0.217839 1.45956 2.46745e-06
+  rotation -1.78797e-06 3.98812e-07 1 -1.5708053071795867
   toolSlot [
-    Robotiq3fGripper {
+    Robotiq2f140Gripper {
+      rotation 1 0 0 -1.5707953071795862
     }
   ]
 }
 QRBox {
-  translation -0.3664936090709019 1.0224383813316544 0.31476068725247924
-  rotation 0.8953413877971713 0.31493539550314614 0.3149277630770468 1.6810978094104385
+  translation 0.9890188339882854 0.8697017810330465 0.16997547499999993
+  rotation 0.5221215848068307 0.6030709123638793 0.6030709123638794 2.179216944227777
   name "A"
   qrTexture [
     "../textures/qr.png"
   ]
 }
-ConveyorBelt {
-  hidden translation_1 5.084799248322724e-10 6.013793907300169e-10 0.2247174734470049
-  hidden rotation_1 0.12976381470040682 0.9029075081420109 0.4097796775526856 1.5762101570916295e-10
-  translation 0.58 -2.25 0
-  rotation 0 0 1 -1.5707953071795862
-  name "conveyor belt(1)"
-  size 1.6 0.3 0.3
-  speed 0
-  acceleration 0
-}
 E-puck {
-  hidden position_0_0 652.4049673392336
-  hidden position_0_1 -652.4057692666174
-  hidden linearVelocity_0 -0.010336751205313546 0.0034827302409952566 -3.295103130819679e-06
-  hidden angularVelocity_0 9.291021014438246e-05 -3.580713199325956e-05 -4.085250237921968
-  hidden rotation_1 0 -1 0 1.046304607443372
-  hidden linearVelocity_1 0.027008822974402318 -0.09690164966590466 5.865598249328126e-06
-  hidden angularVelocity_1 5.8953013360936515 2.170462209660975 -4.164994710156773
-  hidden rotation_2 0 1 0 1.0455026800595673
-  hidden linearVelocity_2 -0.047643638975320014 0.10387634756219322 2.8904346497253237e-06
-  hidden angularVelocity_2 -5.895113852825314 -2.170529768098014 -4.1652378906261385
-  hidden linearVelocity_44 0.026578453973087286 0.01693912623291344 -2.5889763302681575e-06
-  hidden angularVelocity_44 9.295936090699955e-05 -3.578711673140502e-05 -4.085250289176438
-  translation 0.7444273753408929 0.19342492082013674 -0.00013589315172364905
-  rotation -0.00045475466901382316 -0.0006551099286639398 -0.9999996820145357 1.2576254034890666
+  hidden position_0_0 597.481280871285
+  hidden position_0_1 -597.4812404673887
+  hidden linearVelocity_0 0.002637321584751588 -0.014417802932726884 -4.0018221664456025e-06
+  hidden angularVelocity_0 9.87557242076638e-05 -0.0005900009500373375 -3.8958750708293226
+  hidden rotation_1 0 -1 0 0.7872548797533037
+  hidden linearVelocity_1 0.01743134321903375 0.08677747581044962 -1.1008878564170705e-05
+  hidden angularVelocity_1 -6.2139698938004315 0.9211472261834877 -3.9771808478824267
+  hidden rotation_2 0 1 0 0.7864999318135494
+  hidden linearVelocity_2 -0.012198831044996371 -0.11560856123723527 1.8205314858514077e-05
+  hidden angularVelocity_2 6.214163534613802 -0.922324239272899 -3.977493655301184
+  hidden linearVelocity_44 -0.03445383465425777 -0.008752954008071486 -5.641934045157881e-06
+  hidden angularVelocity_44 9.872312041009816e-05 -0.0005899974911027021 -3.8958751074204696
+  translation 0.41296861648311417 0.3107926675956327 0.00986332168306396
+  rotation 0.0004793016152632423 -0.0005564246903797182 0.9999997303307264 1.3868100296402195
   name "spinning_platform"
   controller "epuck_spinner"
   turretSlot [
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 7.511726478167744e-08
+        position 8.276418928981069e-08
         axis 0 1 0
         anchor 0 0 0.005
       }
@@ -359,7 +344,7 @@ E-puck {
       ]
       endPoint Solid {
         translation 0 0 0.005
-        rotation 0 1 0 7.300048299977715e-08
+        rotation 0 0.9999999999999999 0 8.429369702178807e-08
         children [
           Shape {
             appearance OsbWood {
@@ -382,4 +367,212 @@ E-puck {
       }
     }
   ]
+}
+DEF CONVEYOR_BELT Robot {
+  translation 1.08 -0.725002 0.15
+  children [
+    Track {
+      translation -2.754360234114017e-06 0.14999999999966063 0.006220017999575472
+      rotation -2.588809083682227e-07 3.027075674007316e-07 0.9999999999999207 1.5708000000018376
+      children [
+        DEF BELT Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/samples/robotbenchmark/pick_and_place/worlds/textures/conveyor_belt_rubber.jpg"
+              ]
+            }
+            roughness 1
+            metalness 0
+            textureTransform TextureTransform {
+              rotation 1.5708
+              scale 0.5 2
+              translation -0.4120959999998955 0
+            }
+          }
+          geometry Box {
+            size 2.78 0.5 0.05
+          }
+        }
+      ]
+      boundingObject USE BELT
+      physics Physics {
+      }
+      device [
+        LinearMotor {
+          name "belt motor"
+        }
+      ]
+      textureAnimation 0.27 0
+      linearVelocity -5.551115123125783e-15 -2.7755575615628914e-15 -6.1767122191519325e-15
+      angularVelocity -1.6203014206317318e-21 2.029187427371995e-21 8.326672684688769e-15
+    }
+    DEF CYL1 Pose {
+      translation 0 1.28 0
+      rotation 0 1 0 -1.570796
+      children [
+        DEF CYL Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.03
+          }
+        }
+      ]
+    }
+    DEF CYL2 Pose {
+      translation 0 1.34 0
+      rotation 0 1 0 -1.570796
+      children [
+        USE CYL
+      ]
+    }
+    DEF CYL3 Pose {
+      translation 0 1.4 0
+      rotation 0 1 0 -1.570796
+      children [
+        USE CYL
+      ]
+    }
+    DEF CYL4 Pose {
+      translation 0 1.46 0
+      rotation 0 1 0 -1.570796
+      children [
+        USE CYL
+      ]
+    }
+    DEF CYL5 Pose {
+      translation 0 1.52 0
+      rotation 0 1 0 -1.570796
+      children [
+        USE CYL
+      ]
+    }
+    DEF LEFT Pose {
+      translation -0.26 0.31 0.01
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Box {
+            size 0.02 3.1 0.1
+          }
+        }
+      ]
+    }
+    DEF RIGHT Pose {
+      translation 0.26 0.31 0.01
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Box {
+            size 0.02 3.1 0.1
+          }
+        }
+      ]
+    }
+    DEF BACK Pose {
+      translation 0 1.87 0.01
+      rotation 0 0 1 1.57079
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Box {
+            size 0.02 0.54 0.1
+          }
+        }
+      ]
+    }
+    DEF BOTTOM Pose {
+      translation 0 1.69 -0.01
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Box {
+            size 0.34 0.54 0.01
+          }
+        }
+      ]
+    }
+    DEF FOOT1 Pose {
+      translation 0.22 1.78 -0.1
+      rotation 0 0 1 -1.5708
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Cylinder {
+            height 0.12
+            radius 0.03
+          }
+        }
+      ]
+    }
+    DEF FOOT2 Pose {
+      translation -0.22 1.78 -0.1
+      rotation 0 0 1 -1.5708
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Cylinder {
+            height 0.12
+            radius 0.03
+          }
+        }
+      ]
+    }
+    DEF FOOT3 Pose {
+      translation -0.220005 0.159999 -0.1
+      rotation 0 0 1 -1.5708
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Cylinder {
+            height 0.12
+            radius 0.03
+          }
+        }
+      ]
+    }
+    DEF FOOT4 Pose {
+      translation 0.220005 0.159999 -0.1
+      rotation 0 0 1 -1.5708
+      children [
+        Shape {
+          appearance BrushedAluminium {
+          }
+          geometry Cylinder {
+            height 0.12
+            radius 0.03
+          }
+        }
+      ]
+    }
+  ]
+  name "conveyor belt"
+  boundingObject Group {
+    children [
+      USE CYL1
+      USE CYL2
+      USE CYL3
+      USE CYL4
+      USE CYL5
+      USE LEFT
+      USE RIGHT
+      USE BOTTOM
+      USE BACK
+      USE FOOT1
+      USE FOOT2
+      USE FOOT3
+      USE FOOT4
+    ]
+  }
+  controller "belt_controller"
 }

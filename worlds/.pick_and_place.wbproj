@@ -7,6 +7,6 @@ centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: -1
 consoles: Console:All:All
-renderingDevicePerspectives: UR5e:side_camera;1;4.09375;0;0
-renderingDevicePerspectives: UR5e:top_camera;1;3.67188;0.671748;0.00454545
+renderingDevicePerspectives: UR5e:side_camera;1;0.289844;0;0
+renderingDevicePerspectives: UR5e:top_camera;1;0.260023;0.564024;0.00151515
 renderingDevicePerspectives: spinning_platform:camera;1;1;0;0

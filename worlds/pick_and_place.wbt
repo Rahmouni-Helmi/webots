@@ -28,6 +28,8 @@ WorldInfo {
   title "Pick and Place"
   window "pick_and_place"
   basicTimeStep 16
+  defaultDamping Damping {
+  }
   contactProperties [
     ContactProperties {
       material2 "box"
@@ -38,8 +40,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.0916754099449144 0.9748719249656559 0.20302795158595432 0.8675506529251247
-  position -2.8265345612948405 0.057227948853141475 4.755565026598982
+  orientation -0.2586909816482821 0.8708178529011528 0.41803737043770917 1.235649998127308
+  position -2.0661466153885177 -0.49318760089225355 6.7529613865513145
   exposure 1.5
 }
 TexturedBackground {
@@ -82,8 +84,8 @@ RectangleArena {
   }
 }
 QRBox {
-  translation 0.9875047793853194 0.9313953200628375 0.16997547500000004
-  rotation 1.3796060445775726e-17 -3.2664041324525874e-17 1 1.5746578564510365
+  translation 0.9875047793853194 0.9313953200628375 0.16997547500373913
+  rotation -1.1562442080565858e-18 5.5586855034538e-18 1 1.5746578564510365
   name "C"
   color 1 0.6 0
   qrTexture [
@@ -91,8 +93,8 @@ QRBox {
   ]
 }
 QRBox {
-  translation 0.9987242379687934 1.0010986466089569 0.16997547500000004
-  rotation 0.7066699316292575 0.03514563219237078 0.7066699316292573 -3.0713303093933524
+  translation 0.9987242379687934 1.0010986466089569 0.16997547500373913
+  rotation 0.7066699316292575 0.03514563219237084 0.7066699316292573 -3.0713303093933524
   name "B"
   color 1 0.6 0
   qrTexture [
@@ -166,8 +168,9 @@ DEF PIPES Pose {
   rotation 0 0 1 -1.57
   children [
     LeverValve {
-      hidden translation_1 0 4.4406548216902774e-08 -4.929390229335695e-14
-      hidden rotation_1 -1 0 0 2.2212228887337495e-06
+      hidden position_0_0 -7.998499316493633e-07
+      hidden translation_1 0 6.040354684983468e-08 -9.122216870771638e-14
+      hidden rotation_1 -0.9999999999999999 0 0 3.021079515808914e-06
       translation 0.50999991 -5.83 1
       rotation 0 0 1 1.5708
       scale 1 1 1
@@ -275,12 +278,17 @@ WoodenBox {
 }
 Robot {
   translation 0.217839 1.45956 2.46745e-06
-  rotation -1.78797e-06 3.98812e-07 1 -1.5708053071795867
+  rotation -1.78797e-06 3.98815e-07 1 -1.5708053071795867
   children [
     Camera {
-      translation 1.71 0.18 0.16
+      translation 1.71 0.22 0.16
       rotation 3.76629e-12 -1.40702e-06 -1 -3.1415853071795863
       name "side_camera"
+      locked TRUE
+      fieldOfView 1
+      width 1280
+      height 720
+      far 100
     }
     Pose {
       translation -0.0467 0.047 0.0252
@@ -369,7 +377,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position -9.220433254674123e-05
+        position -0.00010430853332233615
         axis 0 0 1
         anchor 0 0 0.163
       }
@@ -386,8 +394,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0 0 0.163
-        rotation 0 0 -1 0.0019747202927086673
+        translation -5.570409161160142e-08 -2.3161743194888008e-06 0.16289139324582877
+        rotation -0.0015646951788563955 0.01061858646066935 -0.9999423970162354 0.001966280524713694
         children [
           Shape {
             appearance USE METAL_APPEARANCE
@@ -438,7 +446,7 @@ Robot {
           }
           HingeJoint {
             jointParameters HingeJointParameters {
-              position 0.00023143942439626854
+              position 0.000349516646358156
               axis 0 1 0
               anchor 0 0.138 0
             }
@@ -456,7 +464,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0.138 0
-              rotation 0 1 0 1.5010061448453151
+              rotation 0 1 0 1.5011242220672747
               children [
                 Shape {
                   appearance PBRAppearance {
@@ -570,7 +578,7 @@ Robot {
                 }
                 HingeJoint {
                   jointParameters HingeJointParameters {
-                    position 3.4602090210397785e-05
+                    position 2.7570577830838145e-05
                     axis 0 1 0
                     anchor 0 -0.131 0.425
                   }
@@ -588,7 +596,7 @@ Robot {
                   ]
                   endPoint Solid {
                     translation 0 -0.131 0.425
-                    rotation 0 0.9999999999999999 0 0.001133638132184764
+                    rotation 0 1 0 0.0011266066192281321
                     children [
                       Shape {
                         appearance USE METAL_APPEARANCE
@@ -670,7 +678,7 @@ Robot {
                       }
                       HingeJoint {
                         jointParameters HingeJointParameters {
-                          position 1.0614565266704096e-05
+                          position 2.569146650757438e-05
                           axis 0 1 0
                           anchor 0 0 0.392
                         }
@@ -688,7 +696,7 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0 0 0.392
-                          rotation 0 1 0 1.603267457444678
+                          rotation 0 1 0 1.603282534345917
                           children [
                             Shape {
                               appearance USE METAL_APPEARANCE
@@ -738,7 +746,7 @@ Robot {
                             }
                             HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 6.447764456982289e-06
+                                position -5.889257656399305e-06
                                 axis 0 0 1
                                 anchor 0 0.127 0
                               }
@@ -756,7 +764,7 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0 0.127 0
-                                rotation 0 0 -1 2.501130498964466e-05
+                                rotation 0 0 -1 3.7348541043358494e-05
                                 children [
                                   Shape {
                                     appearance USE METAL_APPEARANCE
@@ -806,7 +814,7 @@ Robot {
                                   }
                                   HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 1.5005695546126316e-05
+                                      position 1.033005027674986e-05
                                       axis 0 1 0
                                       anchor 0 0 0.1
                                     }
@@ -823,8 +831,8 @@ Robot {
                                       }
                                     ]
                                     endPoint Solid {
-                                      translation 5.5361801423578875e-05 -0.008003938601047313 0.14244014312437198
-                                      rotation -0.4198990661261527 -0.9051096651988064 0.06679272587707066 0.00011104811624454617
+                                      translation 5.516336636855182e-05 -0.008003938601048779 0.14244014338276048
+                                      rotation -0.40442445201747523 -0.9123061349175586 0.06433023241175367 0.00011529722416478553
                                       children [
                                         Shape {
                                           appearance USE METAL_APPEARANCE
@@ -841,20 +849,27 @@ Robot {
                                               translation 0.309999 0.68 -1
                                               rotation 0.5773489358533613 0.5773529358529169 0.5773489358533613 -2.094395307179586
                                               name "top_camera"
+                                              fieldOfView 1
+                                              width 1280
+                                              height 720
+                                              far 100
                                             }
                                             Robotiq2f140Gripper {
-                                              hidden translation_1 0 -0.030601 0.054905
-                                              hidden rotation_1 0.9999999999999999 0 0 1.8897385246387346
-                                              hidden translation_3 0 0.081755 -0.02822
-                                              hidden rotation_3 -1 0 0 0.7123736511196309
-                                              hidden translation_5 0 -0.0127 0.06142
-                                              hidden rotation_5 1 0 0 1.8865072545658
-                                              hidden translation_6 0 0.030601 0.054905
-                                              hidden rotation_6 -2.65024240536872e-08 0.8383682285864498 0.5451043141425482 3.141592995920799
-                                              hidden translation_8 0 0.08175504499589241 -0.02821999994938418
-                                              hidden rotation_8 -1 0 0 0.7227502034815174
-                                              hidden translation_10 0 0.0127 0.06142
-                                              hidden rotation_10 -2.643062532406321e-08 -0.8385968020664584 -0.5447526076705909 3.1415929959430016
+                                              hidden position_0_0 0.009428239426482795
+                                              hidden position_0_1 -0.013856035403310688
+                                              hidden position_0_2 5.669458604638686e-05
+                                              hidden position_0_3 0.0003818687366246758
+                                              hidden rotation_1 1 0 0 1.8803102852122502
+                                              hidden position_2_0 0.018797181963121107
+                                              hidden rotation_3 -1 0 0 0.7062028180368741
+                                              hidden rotation_5 1 0 0 1.872651219162489
+                                              hidden position_5_0 0.023224978005878
+                                              hidden rotation_6 -2.6507276121701663e-08 0.8383527760178873 0.5451280793933675 3.141592995919296
+                                              hidden position_7_0 0.0034882867478267733
+                                              hidden translation_8 0 0.08175506976559346 -0.028219999878318677
+                                              hidden rotation_8 -0.9999999999999999 0 0 0.7215117132521703
+                                              hidden rotation_10 -2.639794134569752e-08 -0.8387007987749442 -0.5445924807911603 3.141592995953088
+                                              hidden position_10_0 0.0030497227095031025
                                               rotation 1 0 0 -1.5707953071795862
                                             }
                                           ]
@@ -892,8 +907,8 @@ Robot {
                                           0 0.071 0
                                         ]
                                       }
-                                      linearVelocity -0.00018503373723922749 3.6705542550876296e-07 -2.707196238832612e-05
-                                      angularVelocity 6.887216642037478e-05 1.1277926337961105e-06 -0.0001933939705767064
+                                      linearVelocity 2.7452957683851193e-06 3.2140312199990698e-06 4.7343471881771556e-05
+                                      angularVelocity -7.322316196810008e-05 2.2147989457576924e-06 -8.69065222543565e-07
                                     }
                                   }
                                 ]
@@ -928,8 +943,8 @@ Robot {
                                     0 0 0.1
                                   ]
                                 }
-                                linearVelocity -0.00018507365344501203 1.0584578317307189e-05 -2.6672668475953172e-05
-                                angularVelocity 0.00011055525770240735 1.0383557518375364e-06 -0.0001944517994436821
+                                linearVelocity 2.527833227998746e-06 4.820394687027696e-06 4.935419424925817e-05
+                                angularVelocity -7.283115577769709e-05 1.957005203439139e-06 -1.1174023162792958e-06
                               }
                             }
                           ]
@@ -964,8 +979,8 @@ Robot {
                               0 0.127 0
                             ]
                           }
-                          linearVelocity -0.00018497907607543064 -6.881926572143309e-06 -2.614126467860928e-05
-                          angularVelocity 0.00010920206182005106 -2.0473736001716208e-07 -0.00023163656466913278
+                          linearVelocity 2.4168319263532126e-06 1.0516904403656655e-05 5.10441859095892e-05
+                          angularVelocity -7.317971276631382e-05 1.8578325709545058e-06 2.142846878722758e-06
                         }
                       }
                     ]
@@ -1021,8 +1036,8 @@ Robot {
                         0 0 0.15
                       ]
                     }
-                    linearVelocity -0.00012957146629395704 1.7054951976499824e-05 -1.0612191669790805e-05
-                    angularVelocity 6.393310996578705e-05 -6.60180576228382e-08 -0.0002335160350585336
+                    linearVelocity 1.6762417404543355e-06 7.473150296834605e-06 3.575691156725896e-05
+                    angularVelocity -7.249961386651036e-05 1.3762470372637223e-06 1.6937208453517773e-06
                   }
                 }
               ]
@@ -1066,8 +1081,8 @@ Robot {
                   0 0 0.2125
                 ]
               }
-              linearVelocity -4.617431643734609e-05 -1.9698241737210253e-05 -5.542763124954562e-07
-              angularVelocity 2.081734239071058e-06 7.138377828845748e-08 -0.0002358806517827985
+              linearVelocity 8.520485543331617e-07 4.233215512341143e-06 1.1275265249221026e-05
+              angularVelocity -7.359988322325384e-05 8.903903056680431e-07 1.1257392630905191e-06
             }
           }
         ]
@@ -1101,8 +1116,8 @@ Robot {
             0 -0.02561 0.00193
           ]
         }
-        linearVelocity 1.95271097525722e-06 1.2622387204610686e-05 -5.227821951558897e-08
-        angularVelocity 1.0369387714922768e-06 4.23033222292461e-08 -0.00023819996372568256
+        linearVelocity 3.0059240316120345e-07 1.5069649339156298e-06 -2.11186528049453e-06
+        angularVelocity 1.9582706968803433e-06 5.160688375347033e-07 6.345379637946702e-07
       }
     }
   ]
@@ -1121,8 +1136,8 @@ Robot {
   selfCollision TRUE
 }
 QRBox {
-  translation 1.2601057796461599 0.8847473333573762 0.16997547500000004
-  rotation 7.20395477931576e-18 -2.419775279252559e-18 1 -2.9102849281991823
+  translation 1.2601057796461599 0.8847473333573762 0.16997547500373916
+  rotation -2.8139799496105975e-18 1.0053279294079783e-17 1 -2.9102849281991823
   name "A"
   color 1 0.6 0
   qrTexture [
@@ -1130,28 +1145,26 @@ QRBox {
   ]
 }
 E-puck {
-  hidden position_0_0 1970.624163722141
-  hidden position_0_1 -1970.624048629751
-  hidden linearVelocity_0 -0.008744168026036244 0.011637866182201818 6.8845876347234745e-06
-  hidden angularVelocity_0 -0.00041681817263527446 8.161073478117571e-06 -3.900875189369963
-  hidden translation_1 0 0.026 0.02
-  hidden rotation_1 0 -1 0 3.000111898797075
-  hidden linearVelocity_1 -0.06678702728051253 -0.07265023250610897 -2.0015485340916717e-06
-  hidden angularVelocity_1 5.163309640523149 -3.577469608419983 -3.9799269335036294
-  hidden translation_2 0 -0.025999999999999995 0.02
-  hidden rotation_2 0 1 0 2.999472151715298
-  hidden linearVelocity_2 0.04933067762538842 0.0959080637401691 -1.36415147584002e-05
-  hidden angularVelocity_2 -5.164142194991631 3.5774868432777462 -3.979947855717515
-  hidden linearVelocity_44 0.022023980693242795 -0.009830415130325332 3.490812243190567e-06
-  hidden angularVelocity_44 -0.00041682630343372375 8.166489302920734e-06 -3.9008750746193894
-  translation 0.42915586472424916 0.2663248741542221 0.009863781166143611
-  rotation 0.000491147557697315 0.0002489869656189285 0.9999998483897722 -2.214400152945511
+  hidden position_0_0 2514.605042506405
+  hidden position_0_1 -2514.604895985111
+  hidden linearVelocity_0 -0.0037277823777265985 0.005985383829587518 -5.60582907559011e-06
+  hidden angularVelocity_0 0.0001333218110221828 9.97980218394723e-05 -3.9311403925183397
+  hidden rotation_1 0 1 0 0.6268304680224381
+  hidden linearVelocity_1 0.022405049091034836 -0.09367788309364093 5.08277545390699e-06
+  hidden angularVelocity_1 6.0596742969909 1.5699754687226295 -4.0085775259171665
+  hidden rotation_2 0 -1 0 0.627438786200121
+  hidden linearVelocity_2 -0.029821948007408013 0.10565568890753885 8.265384292255437e-06
+  hidden angularVelocity_2 -6.05940103603634 -1.569777715285515 -4.009060476236759
+  hidden linearVelocity_44 0.032900884952401434 0.015336884464994566 -4.09164844111691e-06
+  hidden angularVelocity_44 0.000133393593899348 9.981880213190396e-05 -3.9311404747307264
+  translation 0.43216418275121743 0.26290974990360205 0.00986518408665153
+  rotation 0.00044771247153266373 0.0006034978085116982 0.9999997176719292 -1.355275035311557
   name "spinning_platform"
   controller "epuck_spinner"
   turretSlot [
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 7.937515959271558e-08
+        position 9.512298058046345e-08
         axis 0 1 0
         anchor 0 0 0.005
       }
@@ -1162,7 +1175,7 @@ E-puck {
       ]
       endPoint Solid {
         translation 0 0 0.005
-        rotation 0 1 0 7.884953353001448e-08
+        rotation 0 1 0 9.424321830774485e-08
         children [
           Shape {
             appearance OsbWood {
@@ -1190,7 +1203,7 @@ DEF CONVEYOR_BELT Robot {
   translation 1.08 -0.725002 0.15
   children [
     Track {
-      translation -2.7692400039747156e-06 0.14999999999989055 0.01967377919432467
+      translation -2.7692400039747156e-06 0.14999999999989055 0.016946599650756844
       rotation -8.714120527145263e-07 1.0220982656396504e-06 0.9999999999990979 1.5708000321478912
       children [
         DEF BELT Shape {
@@ -1205,7 +1218,7 @@ DEF CONVEYOR_BELT Robot {
             textureTransform TextureTransform {
               rotation 1.5708
               scale 0.5 2
-              translation -0.4821439999995515 0
+              translation -0.16415999999945693 0
             }
           }
           geometry Box {
@@ -1222,7 +1235,7 @@ DEF CONVEYOR_BELT Robot {
         }
       ]
       textureAnimation 0.27 0
-      linearVelocity 0 0 -7.231278968507394e-09
+      linearVelocity 0 0 -6.012477964920226e-16
     }
     DEF CYL1 Pose {
       translation 0 1.28 0

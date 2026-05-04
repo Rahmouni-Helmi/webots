@@ -11,7 +11,7 @@ motor = robot.getDevice("belt motor")
 motor.setPosition(float('inf'))
 
 # Set speed
-speed = 0.2
+speed = 0.1
 motor.setVelocity(speed)
 
 # Main loop

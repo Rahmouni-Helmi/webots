@@ -36,8 +36,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.31782553965645177 0.49373287729835286 0.8094533786554821 1.3436874154921987
-  position -0.49720641501327095 -3.355705050435023 5.1824222109318345
+  orientation -0.3083649026155675 -0.06448566135406412 0.9490799156628595 3.5334551617775554
+  position 2.405726930025783 0.7056074832781899 1.1834511580492884
   exposure 1.5
 }
 TexturedBackground {
@@ -80,9 +80,7 @@ RectangleArena {
   }
 }
 QRBox {
-  hidden linearVelocity_0 -0.167220826424541 -0.12675278435855816 2.6511368996476306e-05
-  hidden angularVelocity_0 -0.0020824765057599593 -0.0007437950110059254 1.4946529050743238
-  translation 0.3261411682130215 0.6250021650603153 0.16512692179732477
+  translation 0.92822 -0.0572454 0.246037
   rotation 0.9115048374258994 -0.4112890821757928 0.0004714150811451633 3.1412590346034843
   name "C"
   color 1 0.6 0
@@ -91,7 +89,7 @@ QRBox {
   ]
 }
 QRBox {
-  translation 1.1133196172209132 0.8698651194941477 0.16997547500373913
+  translation 1.17011 0.534651 0.239975
   rotation -0.05938967739274558 0.705858649525238 0.705858649525238 -3.0229526542327343
   name "B"
   color 1 0.6 0
@@ -166,9 +164,6 @@ DEF PIPES Pose {
   rotation 0 0 1 -1.57
   children [
     LeverValve {
-      hidden position_0_0 -1.1285520624682022e-06
-      hidden translation_1 0 8.286151895225121e-08 -1.7162660181924139e-13
-      hidden rotation_1 -1 0 0 4.142844407202781e-06
       translation 0.50999991 -5.83 1
       rotation 0 0 1 1.5708
       scale 1 1 1
@@ -275,7 +270,7 @@ WoodenBox {
   name "wooden box(3)"
 }
 QRBox {
-  translation 1.2601057796461599 0.8847473333573762 0.16997547500373916
+  translation 1.05133 0.332125 0.269975
   rotation 1.7892568478649135e-17 -1.2835581998517654e-17 1 -2.9102849281991823
   name "A"
   color 1 0.6 0
@@ -287,7 +282,7 @@ DEF CONVEYOR_BELT Robot {
   translation 1.08 -0.725002 0.15
   children [
     Track {
-      translation -2.7692400035306264e-06 0.14999999999989033 0.006040950562482411
+      translation -2.76924e-06 0.15 0.00604095
       rotation -8.714120527145271e-07 1.0220982656396508e-06 0.9999999999990978 1.5708000321478908
       children [
         DEF BELT Shape {
@@ -319,7 +314,6 @@ DEF CONVEYOR_BELT Robot {
         }
       ]
       textureAnimation 0.27 0
-      linearVelocity 0 0 -6.013959132579346e-16
     }
     DEF CYL1 Pose {
       translation 0 1.28 0
@@ -469,6 +463,9 @@ DEF CONVEYOR_BELT Robot {
         }
       ]
     }
+    Receiver {
+      channel 1
+    }
   ]
   name "conveyor belt"
   boundingObject Group {
@@ -511,8 +508,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 5.226171035585732e-08 -3.718813058931991e-08 0.11997247509779163
-        rotation -5.049086515715883e-07 -4.892620887644182e-06 -0.9999999999879036 0.14065571776868052
+        translation 5.2261710355857105e-08 -3.718813058931977e-08 0.11997247509779119
+        rotation -5.049086515716848e-07 -4.8926208876451185e-06 -0.9999999999879036 0.14065571776865524
         children [
           Shape {
             appearance OsbWood {
@@ -533,9 +530,13 @@ Robot {
           density -1
           mass 0.5
         }
-        linearVelocity -5.6613868770219686e-05 -3.2554824880920677e-05 -8.400513657304977e-08
-        angularVelocity -4.187432700192371e-06 -3.2062268611788576e-06 1.4946537163221418
       }
+    }
+    Receiver {
+      channel 1
+    }
+    Emitter {
+      channel 2
     }
   ]
   name "rotating_plate"
@@ -549,13 +550,17 @@ Robot {
   }
   controller "plate_controller"
   synchronization FALSE
-  linearVelocity -2.794733968282627e-07 -4.847281883405869e-08 -8.051609008644687e-08
-  angularVelocity 0.00027122355863679325 -0.0004683742161421923 -2.6135590345191677e-07
 }
 Robot {
   translation 0.39 1.02 0
   rotation 0 0 1 -1.5707953071795862
   children [
+    Emitter {
+      channel 1
+    }
+    Receiver {
+      channel 2
+    }
     Camera {
       translation 0.77805 0.0328296 0.18
       rotation 1.32679e-06 1.59084e-06 1 3.14159
@@ -568,7 +573,7 @@ Robot {
       }
     }
     Camera {
-      translation 0.104117 0.68856 0.68902
+      translation 0.0942022 0.688368 0.690308
       rotation 0.6597579156185216 0.018277297662376818 -0.7512559039161452 -3.1291253071795864
       name "top_camera"
       fieldOfView 1
@@ -792,7 +797,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0.138 0
-              rotation 0 -0.9999999999999999 0 3.182017282256878e-07
+              rotation 0 -1 0 3.182017282256878e-07
               children [
                 Shape {
                   appearance PBRAppearance {
@@ -1248,8 +1253,6 @@ Robot {
                                                           boundingObject USE LEFT_FINGER_TRANSFORM
                                                           physics DEF LEFT_FINGER_PHYSICS Physics {
                                                           }
-                                                          linearVelocity -1.579243150161837e-13 5.417176528988097e-12 -1.2832586906591777e-13
-                                                          angularVelocity -6.263425505631912e-12 -1.0943373404469327e-14 7.58853332222388e-12
                                                         }
                                                       }
                                                       DEF RIGHT_FINGER_SLIDER SliderJoint {
@@ -1297,8 +1300,6 @@ Robot {
                                                           name "right finger"
                                                           boundingObject USE RIGHT_FINGER_TRANSFORM
                                                           physics USE LEFT_FINGER_PHYSICS
-                                                          linearVelocity 1.5435668890243996e-13 5.416496399857665e-12 1.2963589997209126e-13
-                                                          angularVelocity -6.269249476747352e-12 -1.2263512339536831e-14 7.587802597127182e-12
                                                         }
                                                       }
                                                       Pose {
@@ -1439,8 +1440,6 @@ Robot {
                                                     }
                                                     physics DEF LIFT_PHYSICS Physics {
                                                     }
-                                                    linearVelocity -3.3434107414549126e-15 4.933815285427816e-12 1.8865125260471544e-15
-                                                    angularVelocity -6.267950672022579e-12 -1.4087678819181659e-14 7.588390599572615e-12
                                                   }
                                                 }
                                                 Pose {
@@ -1567,8 +1566,6 @@ Robot {
                                           0 0.071 0
                                         ]
                                       }
-                                      linearVelocity -2.7714830450742587e-15 4.477719352698886e-12 9.378948956029913e-16
-                                      angularVelocity -6.267336593184911e-12 -1.5937069936606018e-14 7.586178037972255e-12
                                     }
                                   }
                                 ]
@@ -1603,8 +1600,6 @@ Robot {
                                     0 0 0.1
                                   ]
                                 }
-                                linearVelocity -2.7943525584115304e-15 3.698639566759512e-12 5.890104279716763e-16
-                                angularVelocity -7.132878079967903e-12 -8.199460429999413e-15 7.586704800775856e-12
                               }
                             }
                           ]
@@ -1639,8 +1634,6 @@ Robot {
                               0 0.127 0
                             ]
                           }
-                          linearVelocity -2.4875077905750667e-15 2.9824800745913248e-12 1.5145910406850586e-16
-                          angularVelocity -7.132883813292685e-12 3.3981096653122962e-15 6.669793300238782e-12
                         }
                       }
                     ]
@@ -1696,8 +1689,6 @@ Robot {
                         0 0 0.15
                       ]
                     }
-                    linearVelocity -8.151203232801489e-16 1.1210250643274305e-12 1.81155899234122e-15
-                    angularVelocity -4.202634981785206e-12 -1.5886098897441582e-15 6.668345823687533e-12
                   }
                 }
               ]
@@ -1741,8 +1732,6 @@ Robot {
                   0 0 0.2125
                 ]
               }
-              linearVelocity -1.7226767387678206e-15 1.1422470100045964e-12 1.6399418083445887e-15
-              angularVelocity -1.0551778678604641e-12 -1.250682261535741e-15 6.666097815950059e-12
             }
           }
         ]
@@ -1776,8 +1765,6 @@ Robot {
             0 -0.02561 0.00193
           ]
         }
-        linearVelocity -1.424399599469826e-15 -1.733389141183644e-13 -5.087049069139904e-17
-        angularVelocity -1.558308553244532e-16 6.67944212873071e-15 6.669052010263108e-12
       }
     }
   ]

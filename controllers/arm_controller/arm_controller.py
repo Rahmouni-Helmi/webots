@@ -239,10 +239,10 @@ def check_receiver():
 
 
 def detect_box_top_camera(img_rgb):
-    """Detect orange boxes on conveyor via color segmentation.
-    Returns (detected, annotated_bgr, centroid_xy or None)."""
+    """Detect orange boxes on conveyor via color segmentation and check for QR.
+    Returns (detected, qr_found, qr_data, annotated_bgr, centroid_xy or None)."""
     if img_rgb is None:
-        return False, None, None
+        return False, False, None, None, None
 
     img_bgr = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
     annotated = img_bgr.copy()
@@ -295,7 +295,19 @@ def detect_box_top_camera(img_rgb):
         cv2.putText(annotated, f"pos: ({best_centroid[0]}, {best_centroid[1]})",
                     (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
 
-    return detected, annotated, best_centroid
+    # QR Detection on top camera
+    qr_data, bbox, _ = qr_detector.detectAndDecode(img_bgr)
+    qr_found = False
+    if bbox is not None and len(bbox) > 0 and qr_data:
+        qr_found = True
+        pts = bbox[0].astype(int)
+        n = len(pts)
+        for i in range(n):
+            cv2.line(annotated, tuple(pts[i]), tuple(pts[(i+1) % n]), (255, 0, 0), 3) # Blue contour for QR
+        cv2.putText(annotated, f"QR DETECTED: {qr_data}", (10, 90),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
+
+    return detected, qr_found, qr_data, annotated, best_centroid
 
 
 def detect_qr_side_camera():
@@ -393,7 +405,7 @@ while robot.step(timestep) != -1:
 
     # ── Show top camera feed with box contouring ──
     top_img, tw, th = webots_camera_to_cv(top_camera)
-    box_detected_now, top_annotated, box_centroid = detect_box_top_camera(top_img)
+    box_detected_now, top_qr_detected_now, top_qr_data, top_annotated, box_centroid = detect_box_top_camera(top_img)
     if top_annotated is not None:
         cv2.imshow(WIN_TOP, top_annotated)
 
@@ -439,6 +451,11 @@ while robot.step(timestep) != -1:
     # ────────────────────────────────────────────
     elif state == "BOX_SETTLING":
         wait_counter += 1
+        
+        if top_qr_detected_now:
+            qr_found = True
+            qr_data = top_qr_data
+
         SETTLE_TICKS = 50    # ~0.8s at 16ms timestep — let box come to rest
         if wait_counter >= SETTLE_TICKS:
             # Now get the box position from camera
@@ -449,6 +466,8 @@ while robot.step(timestep) != -1:
                 dynamic_above = compute_pickup_joints(bx, by, POS_ABOVE_CONV)
                 dynamic_pick  = compute_pickup_joints(bx, by, POS_PICK_CONV)
                 print(f"[ARM] Box located at world ({bx:.3f}, {by:.3f}), moving to pick")
+                if qr_found:
+                    print(f"[QR] ✓ FOUND on TOP camera: {qr_data}")
             else:
                 # Fallback to default if centroid lost
                 dynamic_above = POS_ABOVE_CONV[:]
@@ -486,7 +505,11 @@ while robot.step(timestep) != -1:
 
     elif state == "LIFT_BOX":
         if arm_at_target(dynamic_above):
-            state = "MOVE_TO_PLATE"
+            if qr_found:
+                print("[ARM] QR already found from top camera! Direct to GOOD area.")
+                state = "MOVE_TO_GOOD"
+            else:
+                state = "MOVE_TO_PLATE"
 
     # ────────────────────────────────────────────
     # MOVE_TO_PLATE — carry box to plate

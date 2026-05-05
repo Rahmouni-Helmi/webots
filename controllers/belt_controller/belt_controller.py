@@ -14,7 +14,7 @@ motor.setPosition(float('inf'))
 receiver = robot.getDevice("receiver")
 receiver.enable(timestep)
 
-BELT_SPEED = 0.1
+BELT_SPEED = 0.9
 motor.setVelocity(BELT_SPEED)
 
 print("[BELT] Running — waiting for commands on channel 1.")

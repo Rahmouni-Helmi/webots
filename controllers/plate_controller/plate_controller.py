@@ -26,7 +26,7 @@ emitter = robot.getDevice("emitter")
 # ── State ──
 rotating = False
 target_position = 0.0
-ROTATION_SPEED = 1.0          # rad/s while rotating
+ROTATION_SPEED = 7.0       # rad/s while rotating
 POSITION_THRESHOLD = 0.05     # rad — close-enough to target
 
 print("[PLATE] Ready — waiting for commands on channel 1.")
@@ -45,6 +45,13 @@ while robot.step(timestep) != -1:
             motor.setVelocity(ROTATION_SPEED)
             rotating = True
             print(f"[PLATE] Rotating 90° → target {target_position:.3f} rad")
+
+        elif msg == "ROTATE_180":
+            target_position = current + math.pi
+            motor.setPosition(target_position)
+            motor.setVelocity(ROTATION_SPEED)
+            rotating = True
+            print(f"[PLATE] Rotating 180° → target {target_position:.3f} rad")
 
         elif msg == "PLATE_STOP":
             motor.setVelocity(0)
